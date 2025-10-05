@@ -1,30 +1,63 @@
 <script setup lang="js">
-import { ref } from 'vue'
+import { ref, defineAsyncComponent } from 'vue' // 1. Importar defineAsyncComponent y Suspense (implícito)
 import frases from '@/data/phrases.json'
-import GeneratorView from '@/views/GeneratorView.vue'
-import HomeView from './views/HomeView.vue'
-import ThemeSwitcher from '@/components/ThemeSwitcher.vue' // 1. Importar el componente
 
-const vistaActual = ref('inicio') // Estado inicial: muestra la vista de inicio
+// 1. Usar importaciones dinámicas para Lazy Loading (incluyendo PwaDocsView)
+const HomeView = defineAsyncComponent(() => import('@/views/HomeView.vue'))
+const GeneratorView = defineAsyncComponent(() => import('@/views/GeneratorView.vue'))
+const PwaDocsView = defineAsyncComponent(() => import('@/views/PwaDocsView.vue')) // 🟢 NUEVA VISTA
+
+import ThemeSwitcher from '@/components/ThemeSwitcher.vue'
+
+// 2. Extender el estado de vista actual
+const vistaActual = ref('inicio') // Puede ser 'inicio', 'generador', o 'docs'
 const mensajeGenerado = ref('')
 
-// Función para generar un número aleatorio
 const getRandomIndex = (array) => {
   return Math.floor(Math.random() * array.length)
 }
 
-// Función para generar el mensaje y cambiar a la vista del generador
 const generarMensaje = () => {
   const inicio = frases.inicioHalagador[getRandomIndex(frases.inicioHalagador)]
   const nucleo = frases.nucleoSentimental[getRandomIndex(frases.nucleoSentimental)]
   const cierre = frases.cierreUnico[getRandomIndex(frases.cierreUnico)]
 
   mensajeGenerado.value = `${inicio} ${nucleo} ${cierre}`
-  vistaActual.value = 'generador' // Cambia el estado para mostrar la vista del generador
+  vistaActual.value = 'generador'
 }
 
 const volverAInicio = () => {
   vistaActual.value = 'inicio'
+}
+
+// 3. Objeto para mapear el nombre de la vista al componente
+const vistaComponente = {
+  inicio: HomeView,
+  generador: GeneratorView,
+  docs: PwaDocsView, // 🟢 NUEVO MAPEO
+}
+
+// 4. Props y Eventos genéricos para el <component>
+const propsCompartidas = (vista) => {
+  // Inicializamos las props/listeners vacíos
+  const props = {}
+
+  if (vista === 'inicio') {
+    // CAMBIO: @generar se convierte en onGenerar
+    props.onGenerar = generarMensaje
+  } else if (vista === 'generador') {
+    // 🛑 CORRECCIÓN CLAVE: Acceder al valor de la ref con .value
+    props.mensaje = mensajeGenerado.value
+    // CAMBIO: @nuevoMensaje se convierte en onNuevoMensaje
+    props.onNuevoMensaje = generarMensaje
+    // CAMBIO: @volver se convierte en onVolver
+    props.onVolver = volverAInicio
+  } else if (vista === 'docs') {
+    // CAMBIO: @volver se convierte en onVolver
+    props.onVolver = volverAInicio
+  }
+
+  return props
 }
 </script>
 
@@ -38,15 +71,32 @@ const volverAInicio = () => {
 
     <main class="w-full min-h-screen flex items-center justify-center">
       <Transition name="fade" mode="out-in">
-        <HomeView v-if="vistaActual === 'inicio'" @generar="generarMensaje" />
-        <GeneratorView
-          v-else
-          :mensaje="mensajeGenerado"
-          @nuevoMensaje="generarMensaje"
-          @volver="volverAInicio"
-        />
+        <Suspense>
+          <template #default>
+            <component
+              :is="vistaComponente[vistaActual]"
+              v-bind="propsCompartidas(vistaActual)"
+              :key="vistaActual"
+            />
+          </template>
+
+          <template #fallback>
+            <p class="text-xl text-primary-pink font-semibold animate-pulse">
+              Cargando inspiración... ✨
+            </p>
+          </template>
+        </Suspense>
       </Transition>
     </main>
+    <footer class="absolute bottom-4 left-0 right-0 text-center z-40">
+      <button
+        @click="vistaActual = 'docs'"
+        v-if="vistaActual === 'inicio'"
+        class="text-xs text-gray-400 dark:text-gray-600 hover:text-primary-pink dark:hover:text-primary-pink transition-colors underline"
+      >
+        Acerca de esta PWA
+      </button>
+    </footer>
   </div>
 </template>
 
