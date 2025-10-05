@@ -89,7 +89,9 @@ const copiarMensaje = () => {
         <Transition name="fade" mode="out-in">
           <FontAwesomeIcon v-if="!copiadoExito" :icon="faCopy" key="copy-icon" class="size-3.5" />
 
-          <span v-else key="success-text" class="text-sm font-semibold whitespace-nowrap"> </span>
+          <span v-else key="success-text" class="text-sm font-semibold whitespace-nowrap">
+            ¡Copiado con éxito! 🎉
+          </span>
         </Transition>
       </button>
     </div>
