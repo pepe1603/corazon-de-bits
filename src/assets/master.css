@@ -3,7 +3,7 @@
 @import 'css/animations.css';
 /* Estilos base para el modo claro */
 body {
-  @apply bg-background-light text-text-light transition-colors duration-500 ease-in-out;
+  @apply bg-background-light text-text-light transition-colors duration-500 ease-in-out; /*crear bg-background-dark y bg-background-dark no definidos */
 }
 
 /* Estilos para el modo oscuro, aplicados cuando la clase 'dark' está presente */

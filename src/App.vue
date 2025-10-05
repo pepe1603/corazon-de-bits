@@ -28,13 +28,28 @@ const volverAInicio = () => {
 </script>
 
 <template>
-  <main class="min-h-screen flex items-center justify-center bg-gray-100">
-    <HomeView v-if="vistaActual === 'inicio'" @generar="generarMensaje" />
-    <GeneratorView
-      v-else
-      :mensaje="mensajeGenerado"
-      @nuevoMensaje="generarMensaje"
-      @volver="volverAInicio"
-    />
+  <main class="min-h-screen flex items-center justify-center bg-background-light">
+    <Transition name="fade" mode="out-in">
+      <HomeView v-if="vistaActual === 'inicio'" @generar="generarMensaje" />
+      <GeneratorView
+        v-else
+        :mensaje="mensajeGenerado"
+        @nuevoMensaje="generarMensaje"
+        @volver="volverAInicio"
+      />
+    </Transition>
   </main>
 </template>
+
+<style>
+/* Estilos para la transición de vista */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>

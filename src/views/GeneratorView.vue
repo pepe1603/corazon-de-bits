@@ -1,4 +1,4 @@
-<script setup>
+<script setup name="GeneratorView">
 import { defineProps, defineEmits } from 'vue'
 
 const props = defineProps({
@@ -13,18 +13,20 @@ defineEmits(['nuevoMensaje', 'volver'])
 
 <template>
   <div class="text-center p-8">
-    <p class="text-3xl font-semibold mb-8 text-pink-700">{{ props.mensaje }}</p>
+    <p class="text-4xl font-light italic mb-8 text-primary-pink leading-relaxed">
+      "{{ props.mensaje }}"
+    </p>
 
-    <div class="flex space-x-4 justify-center">
+    <div class="flex space-x-4 justify-center mt-6">
       <button
         @click="$emit('nuevoMensaje')"
-        class="py-2 px-4 text-sm text-pink-500 rounded-full border border-pink-500 hover:bg-pink-50 transition-colors duration-300"
+        class="py-2 px-4 text-sm text-primary-pink rounded-full border-2 border-primary-pink hover:bg-primary-pink hover:text-white transition-colors duration-300 transform hover:scale-105"
       >
         Generar otro
       </button>
       <button
         @click="$emit('volver')"
-        class="py-2 px-4 text-sm text-gray-500 rounded-full border border-gray-500 hover:bg-gray-50 transition-colors duration-300"
+        class="py-2 px-4 text-sm text-gray-500 rounded-full border border-gray-500 hover:bg-gray-50 transition-colors duration-300 transform hover:scale-105"
       >
         Volver
       </button>
