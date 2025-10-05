@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
@@ -14,6 +15,10 @@ export default {
       background: {
         light: '#f8fafc', // Gris muy claro para modo claro
         dark: '#111827', // Gris oscuro para modo oscuro
+      },
+      fontFamily: {
+        pacifico: ['Pacifico', 'cursive'],
+        caveat: ['Caveat Brush', 'cursive'],
       },
     },
   },

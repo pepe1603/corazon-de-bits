@@ -14,7 +14,14 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "vue": "^3.5.22"
+    "@fortawesome/fontawesome-svg-core": "^7.0.0",
+    "@fortawesome/free-brands-svg-icons": "^7.0.0",
+    "@fortawesome/free-regular-svg-icons": "^7.0.0",
+    "@fortawesome/free-solid-svg-icons": "^7.0.0",
+    "@fortawesome/vue-fontawesome": "^3.1.1",
+    "vue": "^3.5.22",
+    "@headlessui/vue": "^1.7.23",
+    "@heroicons/vue": "^2.2.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.33.0",

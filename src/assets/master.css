@@ -1,14 +1,24 @@
-/* src/assets/main.css */
+/* src/assets/master.css */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+/* Resto de tu código CSS... */
 @import './base.css'; /* este archivo importa las utilidades de tailwind*/
 @import 'css/animations.css';
-/* Estilos base para el modo claro */
-body {
-  @apply bg-background-light text-text-light transition-colors duration-500 ease-in-out; /*crear bg-background-dark y bg-background-dark no definidos */
+
+/* 1. ELIMINAmos ESTILOS DE COLOR DE FONDO Y TEXTO DEL BODY */
+/* body {
+    @apply font-caveat bg-background-light text-text-light transition-colors duration-500 ease-in-out;
 }
 
-/* Estilos para el modo oscuro, aplicados cuando la clase 'dark' está presente */
 .dark body {
-  @apply bg-background-dark text-text-dark;
+    @apply bg-background-dark text-text-dark;
+} */
+
+/* MANTENER SOLO LOS ESTILOS ESTRUCTURALES/TIPOGRÁFICOS QUE NO SE DUPLICARÁN EN VUE */
+
+body {
+  @apply font-caveat transition-colors duration-500 ease-in-out;
+  /* Nota: El fondo y el texto ahora se gestionan en App.vue */
 }
 
 /* Configuración de jerarquía de tipografía */

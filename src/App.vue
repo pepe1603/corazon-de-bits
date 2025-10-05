@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import frases from '@/data/phrases.json'
 import GeneratorView from '@/views/GeneratorView.vue'
 import HomeView from './views/HomeView.vue'
+import ThemeSwitcher from '@/components/ThemeSwitcher.vue' // 1. Importar el componente
 
 const vistaActual = ref('inicio') // Estado inicial: muestra la vista de inicio
 const mensajeGenerado = ref('')
@@ -28,17 +29,25 @@ const volverAInicio = () => {
 </script>
 
 <template>
-  <main class="min-h-screen flex items-center justify-center bg-background-light">
-    <Transition name="fade" mode="out-in">
-      <HomeView v-if="vistaActual === 'inicio'" @generar="generarMensaje" />
-      <GeneratorView
-        v-else
-        :mensaje="mensajeGenerado"
-        @nuevoMensaje="generarMensaje"
-        @volver="volverAInicio"
-      />
-    </Transition>
-  </main>
+  <div
+    class="min-h-screen relative bg-background-light text-text-light dark:bg-background-dark dark:text-text-dark transition-colors duration-500"
+  >
+    <div class="fixed top-4 right-4 z-50">
+      <ThemeSwitcher />
+    </div>
+
+    <main class="w-full min-h-screen flex items-center justify-center">
+      <Transition name="fade" mode="out-in">
+        <HomeView v-if="vistaActual === 'inicio'" @generar="generarMensaje" />
+        <GeneratorView
+          v-else
+          :mensaje="mensajeGenerado"
+          @nuevoMensaje="generarMensaje"
+          @volver="volverAInicio"
+        />
+      </Transition>
+    </main>
+  </div>
 </template>
 
 <style>
@@ -51,5 +60,9 @@ const volverAInicio = () => {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+/* Estilo crucial para asegurar que el tema oscuro funcione en el scrollbar de ser necesario */
+.dark {
+  color-scheme: dark;
 }
 </style>
