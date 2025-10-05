@@ -1,13 +1,57 @@
 {
   "inicioHalagador": [
+    "Me encanta cuando...",
+    "Sabes, la forma en que...",
+    "Cuando pienso en ti, recuerdo que...",
+    "Cada vez que te veo...",
+    "Lo más bonito de ti es como...",
     "Cada vez que veo tu sonrisa,",
     "Me encanta la forma en que...",
-    "Cuando estás cerca, el mundo se siente..."
+    "Cuando estás cerca, el mundo se siente...",
+
+    "Hay algo en la manera en que...",
+    "No puedo evitar notar que...",
+    "Siempre me asombra cómo...",
+    "Algo que aprecio mucho de ti es que...",
+    "Quería decirte que...",
+    "Es inspirador ver que...",
+    "Tu sola presencia hace que..."
   ],
   "nucleoSentimental": [
+    "haces que el mundo parezca un lugar más amable.",
+    "tu risa ilumina hasta los días más grises.",
+    "siempre tienes una perspectiva tan única y brillante.",
+    "eres increíblemente auténtica en todo lo que haces.",
+    "manejar las cosas con tanta gracia y dulzura.",
     "haces que todo parezca sencillo.",
     "me doy cuenta de lo afortunado que soy.",
-    "se llena de una luz especial."
+    "se llena de una luz especial.",
+
+    "siempre me recuerdas lo importante que es ser valiente.",
+    "tienes el don de hacer sentir cómoda a cualquier persona.",
+    "me enseñas constantemente algo nuevo sobre la vida.",
+    "tu honestidad y bondad son un verdadero faro.",
+    "puedes encontrar la belleza en las cosas más pequeñas.",
+    "transformas un momento simple en algo memorable.",
+    "demuestras una inteligencia y sensibilidad que son raras.",
+    "siempre sabes qué decir para hacerme sonreír."
   ],
-  "cierreUnico": ["Y eso es magia pura.", "Gracias por ser tú.", "Eres un regalo."]
+  "cierreUnico": [
+    "¡Eso es pura magia!.",
+    "Eres un regalo para el mundo.",
+    "Y me encanta eso.",
+    "Sigue brillando así.",
+    "Gracias por ser esa persona especial.",
+    "Y eso es magia pura.",
+    "Gracias por ser tú.",
+    "Eres un regalo.",
+
+    "Es un placer tenerte cerca.",
+    "Nunca cambies, por favor.",
+    "Te lo digo con todo mi corazón.",
+    "Espero que lo sepas.",
+    "Solo quería que lo supieras.",
+    "Y me inspiras a ser mejor.",
+    "Gracias por existir."
+  ]
 }
