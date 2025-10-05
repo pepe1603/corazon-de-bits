@@ -77,7 +77,7 @@ const copiarMensaje = () => {
         :class="[
           'absolute right-0 sm:right-4 top-0 p-2 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-transparent', // Estilos para el estado NO copiado (Ícono)
           !copiadoExito
-            ? 'border-2 border-primary-pink text-primary-pink hover:bg-primary-pink hover:text-white size-8 flex items-center justify-center'
+            ? 'border border-primary-pink text-primary-pink hover:bg-primary-pink hover:text-white size-8 flex items-center justify-center'
             : 'bg-green-100 text-green-600 px-3 py-1.5', // Estilos para el mensaje de éxito
           // Ajuste de margen negativo para subirlo ligeramente fuera del flujo
 
